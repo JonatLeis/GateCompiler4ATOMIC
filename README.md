@@ -56,6 +56,6 @@ This tool also automatically optimizes the number of memristors used, calculates
     The compiler supports the idea of executing multiple gates in parallel within a stage. Future extensions can focus on further enhancing parallelization support, making it even easier to design and optimize circuits for concurrent processing.
 
 # License & Contact
-This project is provided for use in our group project for EMCA during WS24/25 at University Heidelberg only. If you wish to use it for commercial purposes or outside the scope of this project, please contact me directly.
+This project is provided for use in our group project for *Emerging Computing Paradigms* during WS24/25 at University Heidelberg only. If you wish to use it for commercial purposes or outside the scope of this project, please contact me directly.
 
 For any questions, suggestions, or licensing inquiries, please open an Issue or email the developer of this framework at jonathan.leis@outlook.de
