@@ -1,0 +1,63 @@
+-------------------------------------------------------------------------------------------
+Gates:
+Label           Logic                           Imply Logic
+AND             a AND b                         (b -> (a -> 0)) -> 0
+OR              a OR b                          (b -> 0) -> a
+XOR             a XOR b                         (a -> b) -> ((b -> a) -> 0)
+-------------------------------------------------------------------------------------------
+Templates:
+
+OR-GATE:
+Imply-Logic:
+    (b -> 0) -> a ==
+    NOT(b) -> a ==
+    NOT(a) -> b ==
+    (a -> 0) -> b
+
+Algorithm:
+    OR: a OR b (2 work regs)
+    s1 -> 0                         s1 = 0
+    s2 -> 0                         s2 = 0
+    a -> s1                         s1 = NOT(a)
+    s1 -> s2                        s2 = a
+    s1 -> 0                         s1 = 0
+    b -> s1 = s1'                   b -> 0                                              NOT(b)
+    s1' -> s2 = s2'                 (b -> 0) -> a                                       NOT(b) -> a == a OR b
+    OUTPUT: s2' = a OR b
+------------------------------------------
+XOR-GATE
+Imply-Logic:
+    {((a -> 0) -> b) -> [(a -> (b -> 0)) -> 0]} -> 0 ==
+    [(OR(a,b) -> AND(a,b))] -> 0
+
+Algorithm
+XOR: a XOR b (3 work regs)
+s1 -> 0                         s1 = 0
+s2 -> 0                         s2 = 0
+a -> s1 = s1'                   a -> 0
+b -> s1' = s1''                 b -> (a -> 0)
+s1'' -> s2 = s2'                (b -> (a -> 0)) -> 0                                    # AND on RHS
+s1 -> 0                         s1 = 0
+s3 -> 0                         s3 = 0
+a -> s1                         s1 = NOT(a)
+s1 -> s3                        s3 = a
+s1 -> 0                         s1 = 0
+b -> s1 = s1'                   b -> 0
+s1' -> s3 = s3'                   (b -> 0) -> a                                           # OR on LHS
+s3' -> s2' = s2''                ((b -> 0) -> a) -> [(b -> (a -> 0)) -> 0]
+s1 -> 0                         s1 = 0
+s2'' -> s1 = s1'                {((b -> 0) -> a) -> [(b -> (a -> 0)) -> 0]} -> 0        # XOR(a,b)
+------------------------------------------
+AND-GATE:
+    Imply-Logic:
+    (b -> (a -> 0)) -> 0 == 
+    NOT(b -> NOT(a))
+
+Algorithm:
+    AND: a AND b (2 work regs)
+    s1 -> 0                     s1 = 0
+    s2 -> 0                     s2 = 0
+    a -> s1 = s1'               a -> 0                                              NOT(a)
+    b -> s1' = s1''             b -> (a -> 0)                                       b -> NOT(a)
+    s1'' -> s2 = s2'            (b -> (a -> 0)) -> 0                                NOT(b -> NOT(a)) = a AND b
+    OUTPUT: s2' = a AND b
