@@ -55,3 +55,4 @@ result_label = final_output.getLabel()
 
 result_memristor = getOutputIndices([result_label])
 print(f"To read the circuit's output, measure the memristor corresponding to register '{result_memristor}'.")
+
