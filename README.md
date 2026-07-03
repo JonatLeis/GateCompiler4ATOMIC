@@ -1,3 +1,6 @@
+# Important Note!
+This repo will be archived, not maintained at all and was never cleaned up or polished for public use. Use at your own rist, if you have questions you may still write me an EMail.
+
 # Imply Logic Compiler for LTspice with ATOMIC
 
 This project provides a pythonic way to define digital circuits using imply logic. It is designed to be compatible with the ATOMIC tool—and ultimately LTspice. It leverages dependencies of python variables to automatically track data flow through the user-defined circuit.
